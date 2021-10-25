@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <header>
+        <title>Exchnage Rate Application</title>
+    </header>
+    <body>
+        <tr th:if="${rate == null}">
+            <div>No rate</div>
+        </tr>
+        <tr th:if="${rate != null}">
+            <div th:text="${'1 PLN = ' + rate + ' ' + currency}"></div>
+        </tr>
+        <form method="get" action="/rate" class="form-actions">
+            <input type="text" name="currency">
+            <input type="submit" value="Find Rate"/>
+        </form>
+    </body>
+</html>

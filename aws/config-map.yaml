@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  APP_NAME: "Exchange Rate AWS v.1.0"
+kind: ConfigMap
+metadata:
+  name: ex-rate-config
+  labels:
+    app: ex-rate

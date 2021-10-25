@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ex-rate
+  labels:
+    app: ex-rate
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ex-rate
+  template:
+    metadata:
+      labels:
+        app: ex-rate
+    spec:
+      containers:
+        - name: ex-rate
+          image: panwoj/ex-rate-app:1.0
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 3
+          envFrom:
+            - configMapRef:
+                name: ex-rate-config
